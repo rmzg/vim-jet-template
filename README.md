@@ -1,47 +1,48 @@
-mustache and handlebars mode for vim
-====================================
+# Jet mode for vim
 
-A vim plugin for working with [mustache][mustache] and
-[handlebars][handlebars] templates. It has:
+This is a fork from the Mustache/Handlebars vim syntax plugin, which jet shares many similarities with. It is a work in progress. Specifically this readme is mostly out of date.
 
- - syntax highlighting
- - matchit support
- - mustache abbreviations (optional)
- - section movement mappings `[[` and `]]`
- - text objects `ie` (inside element) and `ae` (around element)
+A vim plugin for working with and
+[jet][jet] templates. It has:
+
+- syntax highlighting
+- matchit support
+- mustache abbreviations (optional)
+- section movement mappings `[[` and `]]`
+- text objects `ie` (inside element) and `ae` (around element)
 
 This plugin contributes to [vim-polyglot](https://github.com/sheerun/vim-polyglot) language pack.
 
 **Note**: for compatibility reason #7, we've renamed the repo name from
-`vim-mode` to `vim-mustache-handlebars`.
+`vim-mode` to `vim-mustache-jet`.
 
 ### Install for pathogen
 
     cd ~/.vim/
-    git clone git://github.com/mustache/vim-mustache-handlebars.git bundle/mustache
+    git clone git://github.com/mustache/vim-mustache-jet.git bundle/mustache
     vim bundle/mustache/example.mustache
 
 Get [pathogen][pathogen].
 
 ### Install for vundle
 
-Add `Plugin 'mustache/vim-mustache-handlebars'` to your `.vimrc` and do a
+Add `Plugin 'mustache/vim-mustache-jet'` to your `.vimrc` and do a
 `:PluginInstall`.
 
-### Built-in Vim Package Manager 
+### Built-in Vim Package Manager
 
 > **Heads up!** Only available for Vim 8+
 
 mkdir -p ~/.vim/pack/mustache/start
 cd ~/.vim/pack/mustache/start
-git clone https://github.com/mustache/vim-mustache-handlebars.git
+git clone https://github.com/mustache/vim-mustache-jet.git
 
 **To learn more about Vim's built-in package manager:** `:help packages`.
 
 ### Manually Install
 
     cd ~/.local/src
-    git clone git://github.com/mustache/vim-mustache-handlebars.git mustache.vim
+    git clone git://github.com/mustache/vim-mustache-jet.git mustache.vim
     cp -R mustache.vim/syntax/* ~/.vim/syntax/
     cp -R mustache.vim/ftdetect/* ~/.vim/ftdetect/
     cp -R mustache.vim/ftplugin/* ~/.vim/ftplugin/
@@ -54,42 +55,45 @@ You can activate mustache abbreviations by putting this line in your `.vimrc`:
 
 Now you get a set of convenient abbreviations. Underscore `_` indicates where
 your cursor ends up after typing an abbreviation:
- - `{{` => `{{_}}`
- - `{{{` => `{{{_}}}`
- - `{{!` => `{{!_}}`
- - `{{>` => `{{>_}}`
- - `{{<` => `{{<_}}`
- - `{{#` produces
 
-   ```
-   {{# _}}
-   {{/}}
-   ```
- - `{{if` produces
+- `{{` => `{{_}}`
+- `{{{` => `{{{_}}}`
+- `{{!` => `{{!_}}`
+- `{{>` => `{{>_}}`
+- `{{<` => `{{<_}}`
+- `{{#` produces
 
-   ```
-   {{#if _}}
-   {{/if}}
-   ```
- - `{{ife` produces
+  ```
+  {{# _}}
+  {{/}}
+  ```
 
-   ```
-   {{#if _}}
-   {{else}}
-   {{/if}}
-   ```
+- `{{if` produces
+
+  ```
+  {{#if _}}
+  {{/if}}
+  ```
+
+- `{{ife` produces
+
+  ```
+  {{#if _}}
+  {{else}}
+  {{/if}}
+  ```
 
 ### Section movement mappings
 
 Following the vim convention of jumping from section to section, `[[` and `]]`
 mappings are implemented for easier movement between mustache tags.
 
- - `]]` jumps to the first following tag
- - `[[` jumps to the first previous tag
+- `]]` jumps to the first following tag
+- `[[` jumps to the first previous tag
 
 Count with section movements is supported:
 
- - `2]]` jumps to the second next tag
+- `2]]` jumps to the second next tag
 
 ### Text objects
 
@@ -99,21 +103,23 @@ link](http://vimdoc.sourceforge.net/htmldoc/motion.html#text-objects). Learning
 text objects really speeds up the vim workflow.
 
 In that spirit, this plugin defines 2 text objects:
- - `ie` a mnemonic for `inside element`, selects all the text inside the
-   mustache tag.
-   For example, when used with `vie` it will visually select the
-   bold text in the following snippets: {{**some_variable**}},
-   {{{**different_variable**}}}.
- - `ae` a mnemonic for `around element`, selects the whole mustache tag,
-   including the curly braces.
-   Example, `vae` visually selects the bold text in the following
-   snippets: **{{some_variable}}** or **{{{another_variable}}}**.
+
+- `ie` a mnemonic for `inside element`, selects all the text inside the
+  mustache tag.
+  For example, when used with `vie` it will visually select the
+  bold text in the following snippets: {{**some_variable**}},
+  {{{**different_variable**}}}.
+- `ae` a mnemonic for `around element`, selects the whole mustache tag,
+  including the curly braces.
+  Example, `vae` visually selects the bold text in the following
+  snippets: **{{some_variable}}** or **{{{another_variable}}}**.
 
 Here are other usage examples:
- - `dae` - deletes the whole mustache tag, including the curly braces
- - `die` - deletes **inside** the mustache tag, leaving only curly braces
- - `yae` - "yanks" the whole mustache tag - with curly braces
- - `cie` - deletes **inside** the mustache tag and goes in insert mode
+
+- `dae` - deletes the whole mustache tag, including the curly braces
+- `die` - deletes **inside** the mustache tag, leaving only curly braces
+- `yae` - "yanks" the whole mustache tag - with curly braces
+- `cie` - deletes **inside** the mustache tag and goes in insert mode
 
 `ie` and `ae` text objects are enabled by default. To disable them, put the
 following in your `.vimrc`:
@@ -122,21 +128,14 @@ following in your `.vimrc`:
 
 ## Maintainers
 
-* [Bruno Michel](http://github.com/nono)
-* [Bruno Sutic](http://github.com/bruno-)
-* [Juvenn Woo](http://github.com/juvenn)
+- [Robert Grimes](http://github.com/rmzg)
 
-This is combined work from
-[juvenn/mustache.vim](http://github.com/juvenn/mustache.vim) and
-[nono/vim-handlebars](http://github.com/nono/vim-handlebars).
+This is combined work from the handlebars/mustache syntax plugin:
+https://github.com/mustache/vim-mustache-handlebars
 
-----
+---
 
 Thanks [@5long](http://github.com/5long) for adding matchit support.
 
 You're encouraged to propose ideas or have discussions via github
 issues.
-
-[mustache]: http://mustache.github.io
-[handlebars]: http://handlebarsjs.com
-[pathogen]: https://github.com/tpope/vim-pathogen
